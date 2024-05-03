@@ -25,3 +25,5 @@ vim.keymap.set("n", "<leader>Y", "\"+Y") -- clipboard
 
 vim.keymap.set("v", ">", ">gv") -- Keep selection after indentation
 vim.keymap.set("v", "<", "<gv") -- Keep selection after indentation
+
+vim.keymap.set("n", "*", "*''") -- Mark word as search phrase
