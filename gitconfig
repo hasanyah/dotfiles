@@ -2,6 +2,8 @@
     defaultBranch = main
 [alias]
     st = status
+    br = branch
+    co = checkout
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
     lgs = log --all --graph --decorate --oneline --simplify-by-decoration
 [user]
