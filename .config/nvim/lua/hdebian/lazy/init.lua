@@ -2,16 +2,10 @@ return {
     {
         "folke/tokyonight.nvim",
         config = function()
-            vim.cmd("colorscheme tokyonight")
+            vim.cmd("colorscheme tokyonight-night")
         end,
-        opts = {
-            style = "storm",
-        },
     },
 
-    {
-        "nvim-lua/plenary.nvim",
-    },
-
+    "nvim-lua/plenary.nvim",
     "tpope/vim-surround",
 }
