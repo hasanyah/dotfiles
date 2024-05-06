@@ -1,11 +1,13 @@
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [alias]
     st = status
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	lgs = log --all --graph --decorate --oneline --simplify-by-decoration
+    lgs = log --all --graph --decorate --oneline --simplify-by-decoration
 [user]
-	email = hasanyah@gmail.com
-	name = Hasan Yahya
+    email = hasanyah@gmail.com
+    name = Hasan Yahya
+[pull]
+    ff = only
 [core]
     editor = vi
