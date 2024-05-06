@@ -7,3 +7,5 @@
 [user]
 	email = hasanyah@gmail.com
 	name = Hasan Yahya
+[core]
+    editor = vi
