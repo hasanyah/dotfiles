@@ -12,6 +12,7 @@ return {
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
             "j-hui/fidget.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
         },
         config = function()
             require("fidget").setup()
@@ -19,7 +20,9 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
-                    "phpactor"
+                    "phpactor",
+                    "yamlls",
+                    "gopls"
                 },
 
                 handlers = {
@@ -37,6 +40,28 @@ return {
                                     }
                                 }
                             }
+                        }
+                    end,
+
+                    ["yamlls"] = function()
+                        local lspconfig = require("lspconfig")
+                        lspconfig.yamlls.setup{
+                            bin = 'prettier',
+                            filetypes = {
+                                "css",
+                                "graphql",
+                                "html",
+                                "javascript",
+                                "javascriptreact",
+                                "json",
+                                "less",
+                                "markdown",
+                                "scss",
+                                "typescript",
+                                "typescriptreact",
+                                "yaml",
+                                "yml"
+                            },
                         }
                     end,
 
@@ -89,8 +114,6 @@ return {
             vim.diagnostic.config({
                 virtual_text = true
             })
-
-
         end
     }
 }

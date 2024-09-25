@@ -30,12 +30,12 @@ vim.opt.colorcolumn = "80"
 vim.g.clipboard = {
     name = "tmux clipboard",
     copy = {
-        ["+"] = "clip.exe",
-        ["*"] = "clip.exe",
+        ["+"] = "pbcopy",
+        ["*"] = "pbcopy",
     },
     paste = {
-        ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-        ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        ["+"] = 'pbpaste',
+        ["*"] = 'pbpaste',
     },
     cache_enabled = true,
 }
