@@ -115,7 +115,16 @@ alias dcu="docker compose up -d"
 alias dcuf="docker compose up -d --build --force-recreate"
 alias dcl="docker compose logs -f"
 alias dnames="docker ps --format \"table {{.Names}}\" | (read -r; printf "%s\n" "$REPLY"; sort -k 3)"
-alias asd='cd $(find ~/Projects -mindepth 1 -maxdepth 1 -type d | fzf)'
+
 dce() {
     docker compose exec -ti "$1" sh
+}
+print_additional_list() {
+    additional_dirs=("/home/$USER/.local/scripts" "/home/$USER/.config/nvim")
+    for dir in "${additional_dirs[@]}"; do
+        echo "$dir"
+    done
+}
+asd() {
+    cd $((print_additional_list; find ~/Projects -mindepth 1 -maxdepth 1 -type d) | fzf)
 }
