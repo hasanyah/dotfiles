@@ -1,5 +1,5 @@
-# Cheers to the primeagen
 #!/bin/bash
+# Cheers to the primeagen
 
 additional_dirs=("/home/$USER/.local/scripts" "/home/$USER")
 print_list() {
