@@ -1,7 +1,7 @@
 # NOTE:  Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=3000
+SAVEHIST=3000
 setopt nomatch
 unsetopt beep
 bindkey -v
@@ -95,14 +95,23 @@ else
     export EDITOR='nvim'
 fi
 
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/scripts:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export NVM_PATH="/opt/nvim-linux64/bin"
-export PATH=$PATH:$NVM_PATH
+export PATH=$NVM_PATH:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export NOTES_DIR="$HOME/Projects/notes/"
+export HR_PROJECTS_DIR="$HOME/Projects"
+export PATH="/usr/local/opt/php@8.3/bin:$PATH"
+export PATH="/usr/local/opt/php@8.3/sbin:$PATH"
+export PATH="$HOME/Projects/scripts:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 
 # Enable <C-r>
 bindkey '^R' history-incremental-search-backward
-
-export NOTES_DIR="$HOME/Projects/notes/"
 
 # Aliases
 alias ls='ls --color=auto'
@@ -111,8 +120,10 @@ alias la='ls -A'
 
 alias dcd="docker compose down -v"
 alias dcb="docker compose build"
-alias dcu="docker compose up -d"
-alias dcuf="docker compose up -d --build --force-recreate"
+alias dcu="docker compose up"
+alias dcud="docker compose up -d"
+alias dcuf="docker compose up --build --force-recreate"
+alias dcufd="docker compose up -d --build --force-recreate"
 alias dcl="docker compose logs -f"
 alias dnames="docker ps --format \"table {{.Names}}\" | (read -r; printf "%s\n" "$REPLY"; sort -k 3)"
 
@@ -120,11 +131,13 @@ dce() {
     docker compose exec -ti "$1" sh
 }
 print_additional_list() {
-    additional_dirs=("/home/$USER/.local/scripts" "/home/$USER/.config/nvim")
+    additional_dirs=("$HOME/.local/scripts" "$HOME/.config/nvim")
     for dir in "${additional_dirs[@]}"; do
         echo "$dir"
     done
 }
 asd() {
-    cd $((print_additional_list; find ~/Projects -mindepth 1 -maxdepth 1 -type d) | fzf)
+    cd $((print_additional_list; find ~/Projects -mindepth 1 -maxdepth 1 -type d -o -type l) | fzf)
 }
+
+
