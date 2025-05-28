@@ -95,16 +95,18 @@ else
     export EDITOR='nvim'
 fi
 
+## NeoVim
 export PATH=$HOME/.local/scripts:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export NVM_PATH="/opt/nvim-linux64/bin"
+export NVM_PATH="/opt/nvim-linux-x86_64/bin"
 export PATH=$NVM_PATH:$PATH
 
+## Node Version Manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export NOTES_DIR="$HOME/Projects/notes/"
-export HR_PROJECTS_DIR="$HOME/Projects"
+export PROJECTS_DIR="$HOME/Projects"
 export PATH="/usr/local/opt/php@8.3/bin:$PATH"
 export PATH="/usr/local/opt/php@8.3/sbin:$PATH"
 export PATH="$HOME/Projects/scripts:$PATH"
@@ -126,18 +128,30 @@ alias dcuf="docker compose up --build --force-recreate"
 alias dcufd="docker compose up -d --build --force-recreate"
 alias dcl="docker compose logs -f"
 alias dnames="docker ps --format \"table {{.Names}}\" | (read -r; printf "%s\n" "$REPLY"; sort -k 3)"
+alias pyact="source $HOME/.venv/bin/activate"
 
 dce() {
     docker compose exec -ti "$1" sh
 }
 print_additional_list() {
-    additional_dirs=("$HOME/.local/scripts" "$HOME/.config/nvim")
+    additional_dirs=("$HOME/.local/scripts" "$HOME/.config/nvim" "$HOME/Downloads")
     for dir in "${additional_dirs[@]}"; do
         echo "$dir"
     done
 }
-asd() {
+
+byou() {
     cd $((print_additional_list; find ~/Projects -mindepth 1 -maxdepth 1 -type d -o -type l) | fzf)
 }
 
+pssh() {
+    ssh "admin@192.168.1.$1"
+}
 
+hssh() {
+    ssh "admin@10.0.31.$1"
+}
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
