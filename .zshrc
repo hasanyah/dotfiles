@@ -119,6 +119,7 @@ bindkey '^R' history-incremental-search-backward
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
+alias vn='nvim'
 
 alias dcd="docker compose down -v"
 alias dcb="docker compose build"
@@ -129,6 +130,7 @@ alias dcufd="docker compose up -d --build --force-recreate"
 alias dcl="docker compose logs -f"
 alias dnames="docker ps --format \"table {{.Names}}\" | (read -r; printf "%s\n" "$REPLY"; sort -k 3)"
 alias pyact="source $HOME/.venv/bin/activate"
+alias today="date +'%Y-%m-%d'"
 
 dce() {
     docker compose exec -ti "$1" sh
