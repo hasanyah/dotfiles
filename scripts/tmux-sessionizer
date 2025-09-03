@@ -1,14 +1,14 @@
 #!/bin/bash
 # Cheers to the primeagen
 
-additional_dirs=("/home/$USER/.local/scripts" "/home/$USER" "/home/$USER/Downloads")
+additional_dirs=("/home/$USER/.local/scripts" "/home/$USER" "/home/$USER/Downloads" "/home/$USER/.config/nvim")
 print_list() {
     for dir in "${additional_dirs[@]}"; do
         echo "$dir"
     done
-	for dir in $(find /home/${USER}/Personal -maxdepth 1 -mindepth 1 -type d);
-		do echo "$dir";
-	done
+    for dir in $(find /home/${USER}/Personal -maxdepth 1 -mindepth 1 -type d);
+	    do echo "$dir";
+    done
 }
 
 if [[ $# -eq 1 ]]; then
