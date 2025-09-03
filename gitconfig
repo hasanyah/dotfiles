@@ -7,9 +7,13 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
     lgs = log --all --graph --decorate --oneline --simplify-by-decoration
 [user]
-    email = hasanyah@gmail.com
+    email = hasan.yahya@tover.care
     name = Hasan Yahya
 [pull]
     ff = only
 [core]
     editor = vi
+[push]
+	autoSetupRemote = true
+[includeIf "gitdir:~/Personal/"]
+    path = .gitconfig-personal
